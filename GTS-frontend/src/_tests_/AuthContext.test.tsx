@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
-import { authApi } from '../../services/api'
+import { authApi } from '../services/api'
 
 vi.mock('../../services/api', () => ({
   authApi: {
