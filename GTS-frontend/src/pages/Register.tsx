@@ -6,18 +6,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 
-export const validateRegister = (
-  name: string,
-  email: string,
-  password: string
-): string | null => {
-  if (!name) return 'Name is required'
-  if (!email) return 'Email is required'
-  if (!password) return 'Password is required'
-  if (password.length < 6)
-    return 'Password must be at least 6 characters'
-  return null
-}
 
 export const Register = () => {
   const [name, setName] = useState('');
@@ -39,12 +27,6 @@ export const Register = () => {
   const passwordStrength = getPasswordStrength(password);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    const error = validateRegister(name, email, password)
-if (error) {
-  showToast(error, 'error')
-  return
-}
-
     e.preventDefault();
     setIsLoading(true);
 

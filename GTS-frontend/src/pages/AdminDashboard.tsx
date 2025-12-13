@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Package, AlertTriangle, Candy, LogOut, DollarSign, Archive, RefreshCw } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { sweetsApi } from '../services/api';
-import { Sweet, CreateSweetRequest, UpdateSweetRequest } from '../types';
+import type { Sweet, CreateSweetRequest, UpdateSweetRequest } from '../types';
 import { SweetCard } from '../components/SweetCard';
 import { SweetFormModal } from '../components/SweetFormModal';
 import { RestockModal } from '../components/RestockModal';
@@ -22,21 +22,21 @@ export const AdminDashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchSweets();
-  }, []);
-
-  const fetchSweets = async () => {
+  const fetchSweets = useCallback(async () => {
     try {
       setIsLoading(true);
       const data = await sweetsApi.getAll();
       setSweets(data);
-    } catch (error) {
+    } catch {
       showToast('Failed to load sweets', 'error');
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [showToast]);
+
+  useEffect(() => {
+    fetchSweets();
+  }, [fetchSweets]);
 
   const handleAddSweet = async (data: CreateSweetRequest) => {
     try {
@@ -121,7 +121,6 @@ export const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-[#FFFBF0] font-sans text-gray-900 pb-20">
       
-      {/* --- Admin Header --- */}
       <div className="bg-purple-100 border-b-4 border-black py-8 mb-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
@@ -150,9 +149,7 @@ export const AdminDashboard = () => {
 
       <div className="container mx-auto px-4">
         
-        {/* --- Stats Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Total Sweets */}
           <motion.div
             whileHover={{ y: -5 }}
             className="bg-white rounded-2xl p-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-5"
@@ -166,7 +163,6 @@ export const AdminDashboard = () => {
             </div>
           </motion.div>
 
-          {/* Inventory Value */}
           <motion.div
             whileHover={{ y: -5 }}
             className="bg-white rounded-2xl p-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-5"
@@ -180,7 +176,6 @@ export const AdminDashboard = () => {
             </div>
           </motion.div>
 
-          {/* Low Stock */}
           <motion.div
             whileHover={{ y: -5 }}
             className="bg-white rounded-2xl p-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-5"
@@ -195,7 +190,6 @@ export const AdminDashboard = () => {
           </motion.div>
         </div>
 
-        {/* --- Action Bar --- */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-2">
              <div className="w-3 h-8 bg-black"></div>
@@ -213,7 +207,6 @@ export const AdminDashboard = () => {
           </motion.button>
         </div>
 
-        {/* --- Low Stock Alert Section --- */}
         {lowStockSweets.length > 0 && (
           <div className="bg-red-50 border-4 border-red-500 border-dashed rounded-3xl p-6 mb-10">
             <h3 className="text-2xl font-black text-red-600 mb-4 flex items-center gap-3 uppercase">
@@ -244,7 +237,6 @@ export const AdminDashboard = () => {
           </div>
         )}
 
-        {/* --- Inventory Grid --- */}
         {isLoading ? (
           <div className="flex justify-center py-20">
             <LoadingSpinner />
@@ -259,23 +251,10 @@ export const AdminDashboard = () => {
                 transition={{ delay: index * 0.05 }}
                 className="flex flex-col h-full"
               >
-                {/* 
-                  Passing special props to SweetCard if supported, or wrapping it.
-                  Assuming SweetCard handles "isAdmin" logic internally to show edit/delete.
-                */}
                 <div className="flex-grow">
-                   <SweetCard
-                    sweet={sweet}
-                    // Note: If your SweetCard accepts onEdit/onDelete specifically for Admin, pass them here.
-                    // If your current SweetCard only accepts onPurchase/onAddToCart, you might need to
-                    // update SweetCard to accept onEdit/onDelete or wrap it in a container that has overlay buttons.
-                    // Based on previous context, SweetCard had an Admin View placeholder.
-                    // We will inject the Admin Controls below the card instead for cleaner UI.
-                    isAdmin={true} 
-                  />
+                   <SweetCard sweet={sweet} isAdmin={true} />
                 </div>
                 
-                {/* Admin Controls Block (Attached to bottom of card) */}
                 <div className="mt-[-20px] pt-8 px-4 pb-4 bg-gray-100 border-x-2 border-b-2 border-black rounded-b-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative z-0 flex flex-col gap-2">
                    <div className="grid grid-cols-2 gap-2">
                       <button
@@ -304,7 +283,6 @@ export const AdminDashboard = () => {
           </div>
         )}
 
-        {/* Modals - (Assuming these components exist and handle their own styling or are standard modals) */}
         <SweetFormModal
           isOpen={isModalOpen}
           onClose={() => {
