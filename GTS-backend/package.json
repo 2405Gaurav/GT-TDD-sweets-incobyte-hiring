@@ -2,11 +2,11 @@
   "name": "gts-backend",
   "version": "1.0.0",
   "description": "Sweet Shop Management System Backend",
-  "main": "dist/server.js",
+  "main": "server.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/server.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
