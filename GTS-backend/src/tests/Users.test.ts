@@ -1,18 +1,10 @@
 import request from 'supertest';
-import app from '../app.js';
+import './setup';
+import app from '../app';
 import { User } from '../models/Users';
-import { connectDB, disconnectDB } from '../config/db.js';
 
 describe('Authentication Endpoints', () => {
-  beforeAll(async () => {
-    await connectDB();
-    await User.deleteMany({});
-  });
 
-  afterAll(async () => {
-    await User.deleteMany({});
-    await disconnectDB();
-  });
 
   describe('POST /api/auth/register', () => {
     it('should register a new user with customer role by default', async () => {
@@ -147,7 +139,7 @@ describe('Authentication Endpoints', () => {
   describe('GET /api/auth/profile', () => {
     let token: string;
 
-    beforeAll(async () => {
+    beforeEach(async () => {
       await User.deleteMany({});
       const response = await request(app).post('/api/auth/register').send({
         name: 'Profile Test User',

@@ -17,3 +17,24 @@ export const register = asyncHandler(
   }
 );
 
+export const login = asyncHandler(
+  async (req: AuthRequest, res: Response): Promise<void> => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      res.status(400).json({ error: 'Email and password are required' });
+      return;
+    }
+
+    const result = await loginUser(email, password);
+    res.status(200).json(result);
+  }
+);
+
+export const getProfile = asyncHandler(
+  async (req: AuthRequest, res: Response): Promise<void> => {
+    res.status(200).json({
+      user: req.user,
+    });
+  }
+);
