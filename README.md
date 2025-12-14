@@ -327,7 +327,7 @@ Coverage:
 
 ### AI Tools Used
 
-I extensively used **Claude AI (Anthropic)** and **GitHub Copilot** throughout this project to enhance productivity while maintaining code quality and learning.
+I extensively used **Claude AI (Anthropic)** and **ChatGPT/GitHub Copilot** throughout this project to enhance productivity while maintaining code quality and learning.
 
 ### How I Used AI
 
@@ -416,7 +416,7 @@ AI tools are incredibly powerful when used as **assistants**, not **replacements
 🔗 **Live Demo:** [https://g-tsweets.vercel.app](https://g-tsweets.vercel.app)
 
 ### Backend (Render)
-🔗 **API Base URL:** [https://gtsweets-backend.onrender.com/api](https://gtsweets-backend.onrender.com/api)
+🔗 **API Base URL:** [https://gtsweets-backend.onrender.com/api](https://gtsweets-backend.onrender.com)
 
 **Note:** The backend is deployed on Render's free tier, which may spin down after periods of inactivity. First request might take 30-60 seconds to wake up the server.
 
@@ -572,7 +572,7 @@ This project is licensed under the MIT License.
 
 - **Anthropic's Claude AI** for assistance in code review and refactoring
 - **GitHub Copilot** for intelligent code suggestions
-- **Fireship** for excellent TDD tutorials
+- **Fireship/Github youtube** for excellent TDD tutorials
 - **MongoDB** for comprehensive documentation
 - **The TDD community** for best practices and patterns
 
@@ -581,12 +581,10 @@ This project is licensed under the MIT License.
 ## 📊 Project Statistics
 
 - **Total Lines of Code:** ~3,500
-- **Test Files:** 5
-- **Test Cases:** 45+
+- **Test Files:** ~20
+- **Test Cases:** 70-100+
 - **Test Coverage:** 95.2%
-- **Development Time:** ~40 hours
-- **Git Commits:** 51+
-- **API Endpoints:** 16
+- **Git Commits:** 60+
 
 ---
 
