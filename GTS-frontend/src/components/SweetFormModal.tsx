@@ -10,12 +10,12 @@ interface SweetFormModalProps {
   sweet?: Sweet | null;
 }
 
-const categories = ['all', 'cake', 'candy', 'chocolate','cookie','Halwa','Milk based','Dry fruit Based','Syrup based'];
+const categories = ['cake', 'candy', 'chocolate','cookie','Halwa','Milk based','Dry fruit Based','Syrup based'];
 
 export const SweetFormModal = ({ isOpen, onClose, onSubmit, sweet }: SweetFormModalProps) => {
   const [formData, setFormData] = useState<CreateSweetRequest>({
     name: '',
-    category: 'all',
+    category: 'cake',
     price: 0,
     quantity: 0,
     description: '',
