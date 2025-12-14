@@ -11,7 +11,7 @@ import type {
   UpdateSweetRequest,
 } from '../types';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -28,9 +28,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 api.interceptors.response.use(
@@ -93,12 +91,18 @@ export const sweetsApi = {
     return response.data;
   },
 
-  purchase: async (id: string, data: PurchaseRequest): Promise<{ message: string; sweet: Sweet }> => {
+  purchase: async (
+    id: string,
+    data: PurchaseRequest
+  ): Promise<{ message: string; sweet: Sweet }> => {
     const response = await api.post(`/sweets/${id}/purchase`, data);
     return response.data;
   },
 
-  restock: async (id: string, data: RestockRequest): Promise<{ message: string; sweet: Sweet }> => {
+  restock: async (
+    id: string,
+    data: RestockRequest
+  ): Promise<{ message: string; sweet: Sweet }> => {
     const response = await api.post(`/sweets/${id}/restock`, data);
     return response.data;
   },
