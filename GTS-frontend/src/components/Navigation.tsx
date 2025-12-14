@@ -29,18 +29,20 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           
           {/* --- LOGO --- */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <motion.div
-              whileHover={{ rotate: 180, scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="bg-black text-white p-2 rounded-lg border-2 border-transparent group-hover:bg-pink-500 group-hover:border-black transition-colors"
-            >
-              <Candy className="w-6 h-6" />
-            </motion.div>
-            <span className="text-2xl font-black tracking-tighter uppercase italic">
-              Sugar<span className="text-pink-500">Rush</span>
-            </span>
-          </Link>
+         <Link to="/" className="flex items-center gap-3 group">
+  <motion.div
+    whileHover={{ rotate: 180, scale: 1.1 }}
+    transition={{ type: "spring", stiffness: 200 }}
+    className="bg-black text-white p-2 rounded-lg border-2 border-transparent group-hover:bg-pink-500 group-hover:border-black transition-colors"
+  >
+    <Candy className="w-6 h-6" />
+  </motion.div>
+  <img 
+    src="/assets/gts.png" 
+    alt="SugarRush" 
+    className="h-8 w-auto"
+  />
+</Link>
 
           {/* --- DESKTOP NAV --- */}
           <div className="hidden md:flex items-center gap-8">
