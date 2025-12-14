@@ -10,7 +10,7 @@ import { useToast } from '../contexts/ToastContext';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 
-const categories = ['all', 'cake', 'candy', 'chocolate', 'lollipop', 'cookie'];
+const categories = ['all', 'cake', 'candy', 'chocolate','cookie','Halwa','Milk based','Dry fruit Based','Syrup based'];
 
 export const Shop = () => {
   const [sweets, setSweets] = useState<Sweet[]>([]);
