@@ -5,7 +5,6 @@ import {
   ShoppingBag, 
   Star, 
   Zap, 
-  Heart, 
   ArrowRight, 
   Gift, 
   TrendingUp 
@@ -51,10 +50,13 @@ export const Landing = () => {
         </motion.div>
 
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          
+          {/* Text Content - Shifted Right and Up */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:pl-16 lg:-mt-24" 
           >
             <div className="inline-block px-4 py-1 bg-black text-white rounded-full font-bold text-sm mb-6 shadow-[4px_4px_0px_0px_rgba(255,100,200,1)]">
               🚀 The #1 Sweet Shop in Town
@@ -97,22 +99,28 @@ export const Landing = () => {
           </motion.div>
 
           {/* Hero Visual - Floating Cards */}
-          <div className="relative h-[500px] hidden lg:block">
+          <div className="relative h-125 hidden lg:block">
             <motion.div
-              animate={{ y: [0, -20, 0] }}
+              animate={{ y: [10, 20, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="absolute top-10 right-10 z-20"
             >
-              <div className="bg-white p-6 rounded-2xl border-2 border-black shadow-[8px_8px_0px_0px_#A855F7] w-64 rotate-6">
-                <div className="bg-purple-100 h-32 rounded-xl mb-4 flex items-center justify-center">
-                  <Candy className="text-purple-500 w-16 h-16" />
+              <Link to="/shop">
+                <div className="bg-white p-7 rounded-2xl border-2 border-black shadow-[8px_8px_0px_0px_#A855F7] w-72 rotate-6 cursor-pointer hover:scale-105 transition-transform">
+                  <div className="bg-purple-100 h-36 rounded-xl mb-4 overflow-hidden">
+                    <img 
+                      src="/assets/gulab.png" 
+                      alt="Gulab Jamun" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="font-bold text-xl">Gulab Jamun</div>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-sm text-gray-500">Syrup-based</span>
+                    <span className="font-black">₹120</span>
+                  </div>
                 </div>
-                <div className="font-bold text-xl">Sour Blast</div>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-gray-500">Gummies</span>
-                  <span className="font-black">$4.99</span>
-                </div>
-              </div>
+              </Link>
             </motion.div>
 
             <motion.div
@@ -120,16 +128,22 @@ export const Landing = () => {
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute top-40 left-10 z-10"
             >
-              <div className="bg-white p-6 rounded-2xl border-2 border-black shadow-[8px_8px_0px_0px_#EC4899] w-64 -rotate-6">
-                <div className="bg-pink-100 h-32 rounded-xl mb-4 flex items-center justify-center">
-                  <Heart className="text-pink-500 w-16 h-16" />
+              <Link to="/shop">
+                <div className="bg-white p-7 rounded-2xl border-2 border-black shadow-[8px_8px_0px_0px_#EC4899] w-72 -rotate-6 cursor-pointer hover:scale-105 transition-transform">
+                  <div className="bg-pink-100 h-36 rounded-xl mb-4 overflow-hidden">
+                    <img 
+                      src="/assets/laddu.png" 
+                      alt="Besan Ladoo" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="font-bold text-xl">Besan Ladoo</div>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-sm text-gray-500">Traditional</span>
+                    <span className="font-black">₹80</span>
+                  </div>
                 </div>
-                <div className="font-bold text-xl">Love Bites</div>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-gray-500">Chocolate</span>
-                  <span className="font-black">$8.99</span>
-                </div>
-              </div>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -148,21 +162,27 @@ export const Landing = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Feature 1 - Large */}
+            
+            {/* Feature 1 - Trending Flavors (LINKED) */}
             <motion.div 
               whileHover={{ scale: 0.98 }}
-              className="md:col-span-2 bg-blue-50 rounded-3xl p-10 border-2 border-black shadow-[8px_8px_0px_0px_#000]"
+              className="md:col-span-2 bg-blue-50 rounded-3xl border-2 border-black shadow-[8px_8px_0px_0px_#000] relative overflow-hidden group cursor-pointer"
             >
-              <div className="h-full flex flex-col justify-between">
-                <div>
-                  <div className="bg-blue-500 w-14 h-14 rounded-full flex items-center justify-center border-2 border-black mb-6">
-                    <TrendingUp className="text-white w-8 h-8" />
+              <Link to="/shop" className="block p-10 h-full w-full">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                    <div className="bg-blue-500 w-14 h-14 rounded-full flex items-center justify-center border-2 border-black mb-6">
+                      <TrendingUp className="text-white w-8 h-8" />
+                    </div>
+                    <h3 className="text-3xl font-bold mb-4 group-hover:text-blue-600 transition-colors">Trending Flavors</h3>
+                    <p className="text-gray-700 text-lg">We scour the globe to find the viral sweets everyone is talking about. From TikTok famous gummies to Japanese exclusives.</p>
                   </div>
-                  <h3 className="text-3xl font-bold mb-4">Trending Flavors</h3>
-                  <p className="text-gray-700 text-lg">We scour the globe to find the viral sweets everyone is talking about. From TikTok famous gummies to Japanese exclusives.</p>
+                  <div className="mt-8 self-end flex items-center gap-2 font-bold text-blue-500">
+                    SHOP NOW 
+                    <ArrowRight className="w-10 h-10 transition-transform duration-300 group-hover:translate-x-2" />
+                  </div>
                 </div>
-                <ArrowRight className="text-blue-500 w-10 h-10 mt-8 self-end" />
-              </div>
+              </Link>
             </motion.div>
 
             {/* Feature 2 - Vertical */}
@@ -246,23 +266,23 @@ export const Landing = () => {
 
       {/* Simple Footer */}
       <footer className="bg-white border-t-2 border-black py-12 text-center">
-   <div className="flex justify-center items-center gap-2 mb-4">
-      <Candy className="text-pink-500 w-6 h-6" />
-      <span className="font-bold text-xl tracking-tight">SugarRush</span>
-   </div>
-   <p className="text-gray-500">
-      Designed with high sugar content By{' '}
-      <a 
-         href="https://thegauravthakur.in" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         className="text-pink-500 hover:text-pink-600 font-semibold underline decoration-2 underline-offset-2 transition-colors"
-      >
-         Gaurav Thakur
-      </a>
-      .
-   </p>
-</footer>
+        <div className="flex justify-center items-center gap-2 mb-4">
+            <Candy className="text-pink-500 w-6 h-6" />
+            <span className="font-bold text-xl tracking-tight">SugarRush</span>
+        </div>
+        <p className="text-gray-500">
+            Designed with high sugar content By{' '}
+            <a 
+              href="https://thegauravthakur.in" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-600 font-semibold underline decoration-2 underline-offset-2 transition-colors"
+            >
+              Gaurav Thakur
+            </a>
+            .
+        </p>
+      </footer>
     </div>
   );
 };
