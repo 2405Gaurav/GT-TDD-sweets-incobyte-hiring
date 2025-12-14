@@ -58,7 +58,7 @@ export const SweetCard = ({ sweet, onPurchase, onAddToCart, isAdmin }: SweetCard
       </div>
 
       {/* Compact Content */}
-      <div className="p-3 flex flex-col flex-grow">
+      <div className="p-3 flex flex-col grow">
         <div className="flex justify-between items-start gap-2 mb-1">
           <h3 className="text-lg font-black leading-tight line-clamp-1">{sweet.name}</h3>
           <span className="bg-pink-500 text-white px-1.5 py-0.5 rounded border border-black text-xs font-bold shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
