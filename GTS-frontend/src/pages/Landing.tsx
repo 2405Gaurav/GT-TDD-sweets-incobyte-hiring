@@ -248,9 +248,9 @@ export const Landing = () => {
       <footer className="bg-white border-t-2 border-black py-12 text-center">
          <div className="flex justify-center items-center gap-2 mb-4">
             <Candy className="text-pink-500 w-6 h-6" />
-            <span className="font-bold text-xl tracking-tight">SweetShop</span>
+            <span className="font-bold text-xl tracking-tight">SugarRush</span>
          </div>
-         <p className="text-gray-500">© 2024 SweetShop. Designed with high sugar content.</p>
+         <p className="text-gray-500"> Designed with high sugar content By Gaurav Thakur.</p>
       </footer>
     </div>
   );
