@@ -691,14 +691,14 @@ AI sometimes suggested enterprise-level patterns for simple problems
 
 ### **Admin Access**
 ```
-📧 Email: admin@sugarrush.com
-🔑 Password: admin123
+📧 Email: gtad@1234.com
+🔑 Password: 123456
 ```
 
 ### **Customer Access**
 ```
-📧 Email: customer@sugarrush.com
-🔑 Password: customer123
+📧 Email: gt@1234.com
+🔑 Password: 123456
 ```
 
 ---
